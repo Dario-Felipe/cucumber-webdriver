@@ -1,0 +1,16 @@
+{
+  "name": "seleniumprova",
+  "version": "1.0.0",
+  "description": "Prova de testes automatizados\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001bs",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "author": "Dario Felipe",
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "cucumber": "^7.0.0-rc.0",
+    "selenium-webdriver": "^4.0.0"
+  }
+}
