@@ -23,4 +23,6 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
   Then('it should be rendered a error message', async () => {
     assert.equal(errorMessage, actualMessage);
+
+    await driver.close();
   })

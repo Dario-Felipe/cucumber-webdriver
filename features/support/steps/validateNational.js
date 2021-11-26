@@ -15,11 +15,13 @@ let originalWindow;
     await driver.get("https://www2.correios.com.br/sistemas/precosPrazos/");
   })
 
-  When(`the user fill the filds and press the ENTER key on the keyboard`, async () => {
+  When(`the user fill the fields and press the ENTER key on the keyboard`, async () => {
+    await delay(1500);
+
     firstDate =  await driver.findElement(By.xpath("//*[@id='data']")).getAttribute("value");
     originCep = "53040085";
     destinyCep = "53140140";
-  
+
     await driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[3]/form/div/div/span[3]/label/input")).sendKeys(originCep);
     await driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[3]/form/div/div/span[5]/label/input")).sendKeys(destinyCep);
     await driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[3]/form/div/div/span[7]/label/select/option[8]")).click();
@@ -27,6 +29,8 @@ let originalWindow;
   })
 
   Then('it should be return the same date', async () => {
+    await delay(1500);
+
     originalWindow = await driver.getWindowHandle();
     await driver.wait(
       async () => (await driver.getAllWindowHandles()).length === 2,
@@ -38,7 +42,11 @@ let originalWindow;
         await driver.switchTo().window(handle);
       }
     });
-    
+
+    await delay(1500);
+
     const date = await driver.wait(until.elementLocated(By.xpath("/html/body/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/table/tbody/tr[2]/th/small")), 100000).getAttribute("textContent");
     assert.equal(date.slice(19), firstDate);
+
+    await driver.close();
   })

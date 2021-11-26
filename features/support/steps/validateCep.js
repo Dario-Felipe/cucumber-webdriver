@@ -23,4 +23,6 @@ let CEP = "53429-000";
 
   Then('it should be the first zip code rendered in the generated table', async () => {
     assert.equal(CEP, cepArea);
+
+    await driver.close();
   })
